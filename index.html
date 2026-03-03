@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sierra21 — Websites, Software & SaaS Development for Founders & SMBs | Build, Rescue, Advise</title>
+<meta name="description" content="Sierra21 builds high-performance websites, custom software, SaaS platforms and AI tools for founders, startups and small businesses. From idea to working demo in 7 days. No meetings. No agencies. Just shipped software.">
+<meta name="keywords" content="website development, custom software development, SaaS development, AI tools, web app development, MVP development, startup software, SMB software, freelance developer, hire developer, software studio, rapid prototyping, build SaaS platform, fix broken website, rescue failed project, software consultant, small business website, fast website builder">
+<meta name="author" content="James Williams — Sierra21">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://sierra21.com">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sierra21 — Custom Software Development for Founders & SMBs">
+<meta property="og:description" content="From idea to working demo in 7 days. Websites, custom software, SaaS platforms, AI tools. No meetings, no agencies — just shipped software.">
+<meta property="og:url" content="https://sierra21.com">
+<meta property="og:site_name" content="Sierra21">
+<meta property="og:locale" content="en_GB">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sierra21 — Custom Software Development for Founders & SMBs">
+<meta name="twitter:description" content="From idea to working demo in 7 days. Websites, custom software, SaaS platforms, AI tools. No meetings, no agencies — just shipped software.">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Sierra21",
+  "description": "Software development studio building high-performance websites, custom software, SaaS platforms and AI tools for founders and small businesses worldwide.",
+  "url": "https://sierra21.com",
+  "email": "james@sierra21.com",
+  "founder": {
+    "@type": "Person",
+    "name": "James Williams"
+  },
+  "areaServed": "Worldwide",
+  "serviceType": ["Website Development", "Custom Software Development", "SaaS Development", "AI Tool Development", "Web Application Development", "Software Rescue & Recovery", "Technical Advisory"],
+  "knowsAbout": ["Next.js", "React", "Supabase", "Vercel", "TypeScript", "Node.js", "AI Integration", "PostgreSQL"],
+  "slogan": "Stay low. Move fast. Build everything."
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --black: #0a0a0a;
+    --dark: #111111;
+    --card: #161616;
+    --card-hover: #1a1a1a;
+    --border: #1e1e1e;
+    --border-light: #2a2a2a;
+    --gold: #c8a84e;
+    --gold-light: #e4c76b;
+    --gold-dim: rgba(200, 168, 78, 0.06);
+    --gold-glow: rgba(200, 168, 78, 0.15);
+    --neon: #00ff88;
+    --neon-dim: rgba(0, 255, 136, 0.05);
+    --neon-blue: #00d4ff;
+    --neon-purple: #a855f7;
+    --red: #ff4444;
+    --white: #f0f0f0;
+    --grey: #777;
+    --grey-light: #bbb;
+    --grey-mid: #444;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--gold); color: var(--black); }
+
+  /* --- GRID BG --- */
+  .grid-bg {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(200,168,78,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,168,78,0.025) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none; z-index: 0;
+  }
+  .content-wrapper { position: relative; z-index: 1; }
+
+  /* --- SCANLINE --- */
+  .scanline {
+    position: fixed; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent 20%, rgba(200,168,78,0.15) 50%, transparent 80%);
+    z-index: 999; animation: scanDown 8s linear infinite; pointer-events: none;
+  }
+  @keyframes scanDown { 0%{top:-2px} 100%{top:100vh} }
+
+  /* --- CENTRED CONTAINER --- */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  .text-center { text-align: center; }
+
+  /* --- NAV --- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.15rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(24px);
+    background: rgba(10,10,10,0.88);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.05rem; font-weight: 600;
+    letter-spacing: 0.18em; color: var(--white);
+    cursor: pointer; transition: text-shadow 0.3s;
+  }
+  .logo:hover { text-shadow: 0 0 20px var(--gold-glow); }
+  .logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 1.8rem; align-items: center; }
+  .nav-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--grey);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-status {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.1em; color: var(--neon);
+    text-transform: uppercase;
+  }
+  .pulse {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--neon);
+    box-shadow: 0 0 8px var(--neon), 0 0 20px rgba(0,255,136,0.15);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* --- SHARED TYPOGRAPHY --- */
+  .section-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--grey-light);
+    margin-bottom: 1.25rem;
+  }
+  .section-tag .gold { color: var(--gold); }
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700; letter-spacing: -0.035em;
+    line-height: 1.15; margin-bottom: 0.75rem;
+  }
+  .section-sub {
+    font-size: 0.92rem; font-weight: 300;
+    color: var(--grey-light);
+    line-height: 1.75; margin-bottom: 2.5rem;
+    max-width: 520px; margin-left: auto; margin-right: auto;
+  }
+  .accent { color: var(--gold); }
+  .neon-text { color: var(--neon); text-shadow: 0 0 25px rgba(0,255,136,0.12); }
+
+  /* --- BUTTONS --- */
+  .btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.6rem;
+    border: none; cursor: pointer;
+    text-decoration: none; transition: all 0.3s;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary { background: var(--gold); color: var(--black); }
+  .btn-primary:hover { background: var(--gold-light); box-shadow: 0 0 40px var(--gold-glow); }
+  .btn-ghost { background: transparent; color: var(--white); border: 1px solid var(--border-light); }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* --- DIVIDER --- */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+    margin: 0;
+  }
+
+  /* ====================== HERO ====================== */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 3rem;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 15%; left: 50%; transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(200,168,78,0.04) 0%, rgba(0,255,136,0.015) 50%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.3em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 2rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 5.5vw, 4.5rem);
+    font-weight: 800; line-height: 1.06;
+    letter-spacing: -0.04em; margin-bottom: 1.5rem;
+    max-width: 700px;
+  }
+  .hero-sub {
+    font-size: 1.05rem; font-weight: 300;
+    color: var(--grey-light);
+    max-width: 500px; line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; }
+
+  /* --- HERO METRICS --- */
+  .hero-metrics {
+    display: flex; gap: 3rem; flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .metric { text-align: center; }
+  .metric-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem; font-weight: 700; color: var(--gold);
+    line-height: 1.2;
+  }
+  .metric-label {
+    font-size: 0.6rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--grey);
+    margin-top: 0.1rem;
+  }
+
+  /* ====================== TECH TICKER ====================== */
+  .ticker-wrap {
+    overflow: hidden;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+  .ticker-wrap::before, .ticker-wrap::after {
+    content: '';
+    position: absolute; top: 0; bottom: 0; width: 100px; z-index: 2;
+  }
+  .ticker-wrap::before { left: 0; background: linear-gradient(90deg, var(--black), transparent); }
+  .ticker-wrap::after { right: 0; background: linear-gradient(270deg, var(--black), transparent); }
+  .ticker {
+    display: flex; gap: 3rem;
+    animation: ticker 25s linear infinite;
+    width: max-content;
+  }
+  .ticker-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--grey);
+    white-space: nowrap;
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: color 0.3s;
+  }
+  .ticker-item:hover { color: var(--gold); }
+  .ticker-dot {
+    width: 3px; height: 3px; border-radius: 50%;
+    background: var(--grey-mid);
+  }
+  @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+  /* ====================== SECTIONS ====================== */
+  .section { padding: 6rem 0; }
+
+  /* ====================== NOT AN AGENCY ====================== */
+  .callout {
+    padding: 4rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .callout::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .callout h2 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 600; letter-spacing: 0.05em;
+    line-height: 1.8; color: #ccc;
+    max-width: 620px; margin: 0 auto;
+  }
+  .callout h2 strong { color: var(--white); font-weight: 700; }
+  .callout h2 .accent { color: var(--gold); }
+
+  /* ====================== LIVE BUILDS ====================== */
+  .terminal {
+    background: var(--dark); border: 1px solid var(--border);
+    overflow: hidden; text-align: left;
+    margin-bottom: 1.5rem;
+  }
+  .terminal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.65rem 1.25rem;
+    background: rgba(255,255,255,0.015);
+    border-bottom: 1px solid var(--border);
+  }
+  .terminal-dots { display: flex; gap: 5px; }
+  .terminal-dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--grey-mid); }
+  .terminal-dots span:first-child { background: var(--red); }
+  .terminal-dots span:nth-child(2) { background: var(--gold); }
+  .terminal-dots span:nth-child(3) { background: var(--neon); }
+  .terminal-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem; color: var(--grey); letter-spacing: 0.08em;
+  }
+  .terminal-body { padding: 1.25rem; }
+  .t-line {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; line-height: 1.9; color: var(--grey-light);
+  }
+  .t-prompt { color: var(--neon); }
+  .t-gold { color: var(--gold); }
+  .t-dim { color: var(--grey); }
+  .t-white { color: var(--white); }
+  .t-blue { color: var(--neon-blue); }
+  .typing-cursor {
+    display: inline-block; width: 7px; height: 13px;
+    background: var(--neon); margin-left: 2px;
+    animation: blink 1s step-end infinite; vertical-align: middle;
+  }
+  @keyframes blink { 50%{opacity:0} }
+
+  /* BUILD CARDS */
+  .builds-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+  }
+  .build-card {
+    background: var(--dark); padding: 1.75rem;
+    text-align: left; position: relative;
+    transition: background 0.3s;
+  }
+  .build-card:hover { background: var(--card-hover); }
+  .build-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+  }
+  .build-card:nth-child(1)::before { background: var(--neon); box-shadow: 0 0 10px rgba(0,255,136,0.25); }
+  .build-card:nth-child(2)::before { background: var(--neon-blue); box-shadow: 0 0 10px rgba(0,212,255,0.25); }
+  .build-card:nth-child(3)::before { background: var(--neon-purple); box-shadow: 0 0 10px rgba(168,85,247,0.25); }
+  .build-status {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex; align-items: center; gap: 0.35rem;
+    margin-bottom: 0.6rem;
+  }
+  .build-status .dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  .s-green { color: var(--neon); }
+  .s-green .dot { background: var(--neon); box-shadow: 0 0 6px var(--neon); }
+  .s-blue { color: var(--neon-blue); }
+  .s-blue .dot { background: var(--neon-blue); box-shadow: 0 0 6px var(--neon-blue); }
+  .s-purple { color: var(--neon-purple); }
+  .s-purple .dot { background: var(--neon-purple); box-shadow: 0 0 6px var(--neon-purple); }
+  .build-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem; font-weight: 600;
+    margin-bottom: 0.35rem; letter-spacing: 0.05em;
+  }
+  .build-desc {
+    font-size: 0.8rem; color: var(--grey-light);
+    font-weight: 400; line-height: 1.6; margin-bottom: 0.75rem;
+  }
+  .build-bar-track {
+    height: 2px; background: var(--border-light);
+    margin-bottom: 0.4rem; position: relative; overflow: hidden;
+  }
+  .build-bar { height: 100%; position: absolute; top: 0; left: 0; }
+  .bar-green { background: var(--neon); box-shadow: 0 0 8px rgba(0,255,136,0.2); }
+  .bar-blue { background: var(--neon-blue); box-shadow: 0 0 8px rgba(0,212,255,0.2); }
+  .bar-purple { background: var(--neon-purple); box-shadow: 0 0 8px rgba(168,85,247,0.2); }
+  .build-meta {
+    display: flex; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem; color: var(--grey); letter-spacing: 0.05em;
+  }
+  .build-stack {
+    display: flex; flex-wrap: wrap; gap: 0.3rem;
+    margin-top: 0.75rem;
+  }
+  .stack-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.52rem; letter-spacing: 0.06em;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--grey-mid);
+    color: var(--grey-light); text-transform: uppercase;
+  }
+
+  .value-bar {
+    margin-top: 1.5rem;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--dark);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 0.5rem;
+  }
+  .value-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--grey);
+  }
+  .value-amount {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--gold);
+  }
+
+  /* ====================== TIMELINE ====================== */
+  .timeline {
+    display: flex; justify-content: center;
+    gap: 0; margin-top: 2rem;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute; top: 28px; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--neon), var(--gold), transparent);
+  }
+  .tl-step {
+    text-align: center; flex: 1;
+    position: relative; padding: 0 0.5rem;
+  }
+  .tl-dot {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--dark); border: 2px solid var(--gold);
+    margin: 0 auto 0.75rem;
+    position: relative; z-index: 2;
+    transition: all 0.3s;
+  }
+  .tl-step:hover .tl-dot {
+    background: var(--gold);
+    box-shadow: 0 0 15px var(--gold-glow);
+  }
+  .tl-step:last-child .tl-dot { border-color: var(--neon); }
+  .tl-step:last-child:hover .tl-dot { background: var(--neon); box-shadow: 0 0 15px rgba(0,255,136,0.3); }
+  .tl-day {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem; font-weight: 600;
+    color: var(--gold); margin-bottom: 0.2rem;
+  }
+  .tl-step:last-child .tl-day { color: var(--neon); }
+  .tl-label {
+    font-size: 0.7rem; color: var(--grey-light);
+    font-weight: 300; line-height: 1.4;
+  }
+
+  /* ====================== CAPABILITY MATRIX ====================== */
+  .cap-matrix {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+    margin-top: 2rem;
+  }
+  .cap-item {
+    background: var(--dark);
+    padding: 1.5rem;
+    text-align: center;
+    transition: background 0.3s;
+  }
+  .cap-item:hover { background: var(--card-hover); }
+  .cap-item h4 {
+    font-size: 0.85rem; font-weight: 600;
+    margin-bottom: 0.6rem; letter-spacing: -0.01em;
+    color: var(--white);
+  }
+  .cap-bar-track {
+    height: 6px; background: var(--grey-mid);
+    margin: 0 auto; max-width: 120px;
+    position: relative; overflow: hidden;
+    border-radius: 3px;
+    -webkit-transform: translateZ(0);
+  }
+  .cap-bar {
+    height: 6px; border-radius: 3px;
+    position: absolute; top: 0; left: 0;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    box-shadow: 0 0 12px var(--gold-glow), 0 0 4px rgba(200,168,78,0.3);
+    transition: width 1.5s ease;
+    max-height: 6px;
+  }
+  .cap-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem; color: var(--gold);
+    margin-top: 0.5rem; letter-spacing: 0.08em;
+    font-weight: 500;
+  }
+
+  /* ====================== SERVICES ====================== */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border);
+    margin-top: 2rem;
+  }
+  .service-card {
+    background: var(--dark); padding: 1.75rem;
+    text-align: center; transition: background 0.3s;
+  }
+  .service-card:hover { background: var(--card-hover); }
+  .service-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .service-card h3 {
+    font-size: 0.9rem; font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .service-card p {
+    font-size: 0.8rem; color: var(--grey-light);
+    font-weight: 400; line-height: 1.6;
+  }
+  .service-highlight {
+    margin-top: 0.6rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem; color: var(--neon);
+    display: flex; align-items: center; justify-content: center; gap: 0.3rem;
+  }
+
+  /* ====================== SMALL BUILDS ====================== */
+  .small-builds {
+    padding: 3rem 2rem;
+    text-align: center;
+    border: 1px solid var(--border);
+    background: var(--dark);
+    margin-top: 2rem;
+    position: relative; overflow: hidden;
+  }
+  .small-builds::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--neon), transparent);
+  }
+  .small-builds h3 {
+    font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;
+  }
+  .small-builds p {
+    font-size: 0.85rem; font-weight: 300;
+    color: var(--grey-light); line-height: 1.7;
+    max-width: 440px; margin: 0 auto 1.25rem;
+  }
+
+  /* ====================== TRUST SIGNALS ====================== */
+  .trust-bar {
+    display: flex; justify-content: center;
+    gap: 3rem; flex-wrap: wrap;
+    padding: 3rem 0;
+  }
+  .trust-item { text-align: center; }
+  .trust-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem; font-weight: 700; color: var(--gold);
+  }
+  .trust-label {
+    font-size: 0.62rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--grey-light);
+    margin-top: 0.15rem;
+  }
+
+  /* ====================== SMART FORM ====================== */
+  .form-container {
+    border: 1px solid var(--border);
+    background: var(--dark);
+    overflow: hidden; margin-top: 2rem;
+    text-align: left;
+  }
+  .form-header {
+    padding: 0.85rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .form-header-left {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; color: var(--gold);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .form-header-right {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem; color: var(--grey); letter-spacing: 0.05em;
+  }
+  .form-body { padding: 2rem; }
+  .form-progress {
+    display: flex; gap: 4px; margin-bottom: 1.5rem;
+  }
+  .form-progress-bar {
+    flex: 1; height: 2px; background: var(--border-light); border-radius: 1px;
+    transition: background 0.5s;
+  }
+  .form-progress-bar.active { background: var(--gold); box-shadow: 0 0 6px var(--gold-glow); }
+  .form-step { display: none; }
+  .form-step.active { display: block; }
+  .form-step-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem; color: var(--grey);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .form-question {
+    font-size: 1.1rem; font-weight: 500;
+    margin-bottom: 1rem; line-height: 1.4;
+  }
+  .form-options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .form-option {
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--border-light);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; color: var(--grey-light);
+    cursor: pointer; transition: all 0.3s;
+    letter-spacing: 0.04em;
+  }
+  .form-option:hover, .form-option.selected {
+    border-color: var(--gold); color: var(--gold);
+    background: var(--gold-dim);
+  }
+  .form-textarea {
+    width: 100%;
+    background: var(--black);
+    border: 1px solid var(--border-light);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    padding: 0.85rem;
+    resize: vertical;
+    min-height: 80px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .form-textarea:focus { border-color: var(--gold); }
+  .form-textarea::placeholder { color: var(--grey); }
+  .form-input {
+    width: 100%;
+    background: var(--black);
+    border: 1px solid var(--border-light);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    padding: 0.65rem 0.85rem;
+    outline: none; transition: border-color 0.3s;
+  }
+  .form-input:focus { border-color: var(--gold); }
+  .form-input::placeholder { color: var(--grey); }
+  .form-ai-note {
+    margin-top: 1.25rem;
+    padding: 0.65rem 0.85rem;
+    border-left: 2px solid var(--neon);
+    background: var(--neon-dim);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.63rem; color: var(--grey-light); line-height: 1.6;
+  }
+  .form-ai-note span { color: var(--neon); }
+  .form-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 1.5rem;
+  }
+  .form-back {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; color: var(--grey);
+    cursor: pointer; background: none; border: none;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .form-back:hover { color: var(--white); }
+  .form-next {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.65rem 1.25rem;
+    background: var(--gold); color: var(--black);
+    border: none; cursor: pointer; transition: all 0.3s;
+  }
+  .form-next:hover { background: var(--gold-light); box-shadow: 0 0 20px var(--gold-glow); }
+  .form-next:disabled { opacity: 0.3; cursor: not-allowed; }
+  .form-submit-msg {
+    display: none; text-align: center; padding: 2rem;
+  }
+  .form-submit-msg h3 {
+    font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;
+  }
+  .form-submit-msg p {
+    font-size: 0.85rem; color: var(--grey-light); font-weight: 300;
+  }
+
+  /* ====================== OPERATOR ====================== */
+  .operator-text {
+    max-width: 540px; margin: 0 auto;
+  }
+  .operator-text p {
+    font-size: 0.92rem; font-weight: 300;
+    color: var(--grey-light); line-height: 1.8;
+    margin-bottom: 0.85rem;
+  }
+  .operator-text p strong { color: var(--white); font-weight: 500; }
+  .operator-meta {
+    display: flex; flex-direction: column;
+    align-items: center;
+    gap: 0.5rem; margin-top: 1.5rem;
+  }
+  .meta-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.63rem; letter-spacing: 0.06em; color: var(--grey);
+  }
+  .meta-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
+
+  /* ====================== DEPLOYMENT COUNTER ====================== */
+  .deploy-strip {
+    padding: 1rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .deploy-strip span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--grey);
+  }
+  .deploy-strip .num { color: var(--gold); font-weight: 600; }
+
+  /* ====================== CONTACT ====================== */
+  .contact-block {
+    margin-top: 2rem;
+    padding: 2.5rem;
+    border: 1px solid var(--border);
+    background: var(--dark);
+    position: relative; overflow: hidden;
+    text-align: center;
+  }
+  .contact-block::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), var(--neon), transparent);
+  }
+  .contact-block h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.6rem; }
+  .contact-block p {
+    font-size: 0.85rem; font-weight: 300;
+    color: var(--grey-light); margin-bottom: 1.25rem;
+    line-height: 1.7; max-width: 440px; margin-left: auto; margin-right: auto;
+  }
+  .contact-email {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem; color: var(--gold);
+    text-decoration: none; letter-spacing: 0.05em;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: all 0.3s;
+  }
+  .contact-email:hover { color: var(--gold-light); text-shadow: 0 0 20px var(--gold-glow); }
+  .contact-email::after { content: '→'; transition: transform 0.3s; }
+  .contact-email:hover::after { transform: translateX(4px); }
+
+  /* ====================== EASTER EGG TERMINAL ====================== */
+  .easter-terminal {
+    position: fixed; bottom: -300px; left: 50%; transform: translateX(-50%);
+    width: 500px; max-width: 90vw;
+    background: var(--dark); border: 1px solid var(--border);
+    z-index: 200;
+    transition: bottom 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+  }
+  .easter-terminal.visible { bottom: 0; }
+  .easter-terminal .terminal-header { padding: 0.5rem 1rem; }
+  .easter-body {
+    padding: 1rem;
+    max-height: 200px; overflow-y: auto;
+  }
+  .easter-body .t-line {
+    font-size: 0.65rem; line-height: 1.8;
+    opacity: 0; animation: termTypeLine 0.3s ease forwards;
+  }
+  @keyframes termTypeLine { to { opacity: 1; } }
+
+  /* ====================== FOOTER ====================== */
+  footer {
+    padding: 2rem 2.5rem;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-left {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem; color: var(--grey); letter-spacing: 0.1em;
+  }
+  .footer-center {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.5rem; color: var(--grey-mid);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .footer-right {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem; color: var(--grey); letter-spacing: 0.08em;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .footer-right .neon-dot {
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--neon); box-shadow: 0 0 6px var(--neon);
+  }
+
+  /* --- ANIMATIONS --- */
+  .fade-up { opacity: 0; transform: translateY(16px); animation: fadeUp 0.7s ease forwards; }
+  .fd1 { animation-delay: 0.08s; }
+  .fd2 { animation-delay: 0.16s; }
+  .fd3 { animation-delay: 0.24s; }
+  .fd4 { animation-delay: 0.32s; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 768px) {
+    nav { padding: 0.9rem 1.25rem; }
+    .nav-links { display: none; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .container { padding: 0 1.25rem; }
+    .builds-grid, .cap-matrix, .services-grid { grid-template-columns: 1fr; }
+    .timeline { flex-direction: column; gap: 1rem; align-items: center; }
+    .timeline::before { display: none; }
+    .hero-metrics { gap: 1.5rem; }
+    .trust-bar { gap: 1.5rem; }
+    footer { padding: 1.5rem; }
+    .easter-terminal { width: 95vw; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="scanline"></div>
+
+<div class="content-wrapper">
+
+<!-- NAV -->
+<nav>
+  <div class="logo" id="logoTrigger">SIERRA<span>21</span></div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#builds">Live builds</a>
+    <a href="#enquiry">Submit idea</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-status"><div class="pulse"></div> Accepting builds</div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<div class="hero">
+  <div class="hero-tag fade-up">Software Development Studio — Asia-Pacific</div>
+  <h1 class="fade-up fd1">Stay low. Move fast.<br>Build <span class="neon-text">everything.</span></h1>
+  <p class="hero-sub fade-up fd2" style="font-size:1.15rem;color:var(--gold);font-weight:500;margin-bottom:1rem;max-width:620px;">High-performance websites, custom software, SaaS platforms and AI tools — built for founders and small businesses.</p>
+  <p class="hero-sub fade-up fd2" style="margin-top:0;">All built in-house. No meetings. No agencies. Discovery is free. You bring the idea — you get working demos in days, not months.</p>
+  <p class="hero-sub fade-up fd2" style="margin-top:0.25rem;font-size:0.88rem;color:var(--grey-light);font-weight:300;">Whether you're a sole trader who needs a website or a startup building a full platform — same quality, same speed, same developer.</p>
+  <div class="hero-cta fade-up fd3">
+    <a href="#enquiry" class="btn btn-primary">Submit your idea →</a>
+    <a href="#services" class="btn btn-ghost">See services & pricing</a>
+  </div>
+  <div class="fade-up fd3" style="display:flex;gap:1.5rem;margin-top:1.5rem;flex-wrap:wrap;justify-content:center;">
+    <div style="display:flex;align-items:center;gap:0.5rem;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey-light);">
+      <span style="color:var(--gold);">●</span> New builds from £250
+    </div>
+    <div style="display:flex;align-items:center;gap:0.5rem;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey-light);">
+      <span style="color:var(--neon);">●</span> Rescue broken projects
+    </div>
+    <div style="display:flex;align-items:center;gap:0.5rem;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey-light);">
+      <span style="color:var(--neon-blue);">●</span> Strategy & architecture advice
+    </div>
+  </div>
+  <div class="hero-metrics fade-up fd4">
+    <div class="metric"><div class="metric-value">8</div><div class="metric-label">Own companies built &amp; sold</div></div>
+    <div class="metric"><div class="metric-value">3</div><div class="metric-label">Active builds</div></div>
+    <div class="metric"><div class="metric-value">£250k+</div><div class="metric-label">In development</div></div>
+    <div class="metric"><div class="metric-value">0</div><div class="metric-label">Meetings needed</div></div>
+  </div>
+
+  <!-- IDEA TO DEMO TIMELINE -->
+  <div class="fade-up fd4" style="width:100%;max-width:900px;margin:3rem auto 0;padding:0 2rem;">
+    <div style="text-align:center;margin-bottom:2rem;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:3px;color:var(--gold);">From idea to working demo</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;position:relative;">
+      <!-- Connecting line -->
+      <div style="position:absolute;top:20px;left:8%;right:8%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),var(--neon),var(--gold),transparent);"></div>
+      <!-- Day 1 -->
+      <div style="text-align:center;flex:1;position:relative;padding:0 1rem;">
+        <div style="width:18px;height:18px;border-radius:50%;background:var(--dark);border:2px solid var(--gold);margin:0 auto 1rem;position:relative;z-index:2;box-shadow:0 0 12px rgba(200,168,78,0.4);"></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;font-weight:700;color:var(--gold);margin-bottom:0.3rem;">Day 1</div>
+        <div style="font-size:0.8rem;color:var(--grey-light);font-weight:300;line-height:1.5;">Brief received</div>
+      </div>
+      <!-- Day 2 -->
+      <div style="text-align:center;flex:1;position:relative;padding:0 1rem;">
+        <div style="width:18px;height:18px;border-radius:50%;background:var(--dark);border:2px solid var(--gold);margin:0 auto 1rem;position:relative;z-index:2;box-shadow:0 0 12px rgba(200,168,78,0.4);"></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;font-weight:700;color:var(--gold);margin-bottom:0.3rem;">Day 2</div>
+        <div style="font-size:0.8rem;color:var(--grey-light);font-weight:300;line-height:1.5;">Architecture</div>
+      </div>
+      <!-- Day 3-5 -->
+      <div style="text-align:center;flex:1;position:relative;padding:0 1rem;">
+        <div style="width:18px;height:18px;border-radius:50%;background:var(--dark);border:2px solid var(--gold);margin:0 auto 1rem;position:relative;z-index:2;box-shadow:0 0 12px rgba(200,168,78,0.4);"></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;font-weight:700;color:var(--gold);margin-bottom:0.3rem;">Day 3–5</div>
+        <div style="font-size:0.8rem;color:var(--grey-light);font-weight:300;line-height:1.5;">Working demo</div>
+      </div>
+      <!-- Day 7 -->
+      <div style="text-align:center;flex:1;position:relative;padding:0 1rem;">
+        <div style="width:18px;height:18px;border-radius:50%;background:var(--dark);border:2px solid var(--neon);margin:0 auto 1rem;position:relative;z-index:2;box-shadow:0 0 16px rgba(0,255,136,0.5);"></div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.9rem;font-weight:700;color:var(--neon);margin-bottom:0.3rem;">Day 7</div>
+        <div style="font-size:0.8rem;color:var(--neon);font-weight:400;line-height:1.5;">Shipped.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ==================== TECH TICKER ==================== -->
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker">
+    <span class="ticker-item">Next.js<span class="ticker-dot"></span></span>
+    <span class="ticker-item">React<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Supabase<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Vercel<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Tailwind CSS<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Claude AI<span class="ticker-dot"></span></span>
+    <span class="ticker-item">PostgreSQL<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Node.js<span class="ticker-dot"></span></span>
+    <span class="ticker-item">TypeScript<span class="ticker-dot"></span></span>
+    <span class="ticker-item">REST APIs<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Webhooks<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Edge Functions<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Stripe<span class="ticker-dot"></span></span>
+    <span class="ticker-item">OpenAI<span class="ticker-dot"></span></span>
+    <span class="ticker-item">SEO<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Lemon Squeezy<span class="ticker-dot"></span></span>
+    <span class="ticker-item">HTML / CSS<span class="ticker-dot"></span></span>
+    <span class="ticker-item">JavaScript<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Git<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Responsive Design<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Auth & Payments<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Cloud Hosting<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Analytics<span class="ticker-dot"></span></span>
+    <span class="ticker-item">DNS & Domains<span class="ticker-dot"></span></span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item">Next.js<span class="ticker-dot"></span></span>
+    <span class="ticker-item">React<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Supabase<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Vercel<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Tailwind CSS<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Claude AI<span class="ticker-dot"></span></span>
+    <span class="ticker-item">PostgreSQL<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Node.js<span class="ticker-dot"></span></span>
+    <span class="ticker-item">TypeScript<span class="ticker-dot"></span></span>
+    <span class="ticker-item">REST APIs<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Webhooks<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Edge Functions<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Stripe<span class="ticker-dot"></span></span>
+    <span class="ticker-item">OpenAI<span class="ticker-dot"></span></span>
+    <span class="ticker-item">SEO<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Lemon Squeezy<span class="ticker-dot"></span></span>
+    <span class="ticker-item">HTML / CSS<span class="ticker-dot"></span></span>
+    <span class="ticker-item">JavaScript<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Git<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Responsive Design<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Auth & Payments<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Cloud Hosting<span class="ticker-dot"></span></span>
+    <span class="ticker-item">Analytics<span class="ticker-dot"></span></span>
+    <span class="ticker-item">DNS & Domains<span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+<!-- ==================== NOT AN AGENCY ==================== -->
+<div class="callout">
+  <h2>
+    <strong>No account managers.</strong> No Monday standups. No Jira tickets.<br>
+    No 90-day onboarding. No six-figure retainer. No corporate theatre.<br>
+    <span class="accent">One developer. One stack. One focus: your product, shipped.</span>
+  </h2>
+</div>
+
+<!-- ==================== WHO THIS IS FOR ==================== -->
+<div style="padding:2rem 2rem;text-align:center;">
+  <div style="max-width:700px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem 1.2rem;">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);padding:0.4rem 0.8rem;border:1px solid var(--border-light);">Sole traders</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);padding:0.4rem 0.8rem;border:1px solid var(--border-light);">Side hustles</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);padding:0.4rem 0.8rem;border:1px solid var(--border-light);">Small businesses</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--grey);padding:0.4rem 0.8rem;border:1px solid var(--border-light);">Startups</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);padding:0.4rem 0.8rem;border:1px solid var(--gold);border-color:rgba(200,168,78,0.3);">Funded ventures</span>
+  </div>
+  <p style="font-size:0.78rem;color:var(--grey);margin-top:1rem;font-weight:300;">Same build quality at every level. The only thing that changes is scope.</p>
+</div>
+
+<!-- ==================== SERVICES (moved before builds for SMB conversion) ==================== -->
+<div class="section" id="services">
+  <div class="container text-center">
+    <div class="section-tag">What we build</div>
+    <div class="section-title">Build. Rescue. <span class="accent">Advise.</span></div>
+    <div class="section-sub">Three tracks. One developer. All delivered at a pace that'll make your current agency nervous.</div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-tag">Build</div>
+        <h3>Product Development</h3>
+        <p>Websites, SaaS platforms, AI tools, client portals. Fixed scope. Fixed price. Live in weeks.</p>
+        <div class="service-highlight">From £1.5k — websites from £500</div>
+      </div>
+      <div class="service-card">
+        <div class="service-tag">Rescue</div>
+        <h3>Takeover &amp; Fix</h3>
+        <p>Stuck with a broken build, a ghost developer, or an agency bleeding you dry? We take over, fix it, and hand it back working.</p>
+        <div class="service-highlight">⚡ From £500 — scoped on inspection</div>
+      </div>
+      <div class="service-card">
+        <div class="service-tag">Advise</div>
+        <h3>Strategy &amp; Architecture</h3>
+        <p>Paid deep-dive on your idea — market fit, technical architecture, build plan, honest verdict. Walk away with a blueprint.</p>
+        <div class="service-highlight">⚡ From £500 — delivered in 48hrs</div>
+      </div>
+    </div>
+
+    <div class="small-builds">
+      <h3>Starting small? Even better.</h3>
+      <p>A website for your dog walking business. A booking page for your PT sessions. A portfolio for your trades work. A landing page for your side hustle. Same build quality as a £20k platform — just faster and sharper.</p>
+      <div class="service-highlight" style="margin-bottom:1rem;justify-content:center;">Micro builds from £250 — most done same day</div>
+      <a href="#enquiry" class="btn btn-primary">Tell us your idea →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SMART ENQUIRY FORM ==================== -->
+<div class="section" id="enquiry">
+  <div class="container text-center">
+    <div class="section-tag">Start here — takes 2 minutes</div>
+    <div class="section-title">Submit your idea. <span class="neon-text">Get a straight answer.</span></div>
+    <div class="section-sub">No sales calls. No pitch decks. Five quick questions and we'll come back with a scope, a price, and a realistic timeline. Whether it's a £250 landing page or a £25k platform.</div>
+
+    <div class="form-container" id="smartForm">
+      <div class="form-header">
+        <div class="form-header-left">⚡ Quick brief</div>
+        <div class="form-header-right">5 questions • 2 minutes</div>
+      </div>
+      <div class="form-body">
+        <div class="form-progress">
+          <div class="form-progress-bar active" id="prog1"></div>
+          <div class="form-progress-bar" id="prog2"></div>
+          <div class="form-progress-bar" id="prog3"></div>
+          <div class="form-progress-bar" id="prog4"></div>
+          <div class="form-progress-bar" id="prog5"></div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="form-step active" id="step1">
+          <div class="form-step-label">Step 1 — Project type</div>
+          <div class="form-question">What are you looking to build?</div>
+          <div class="form-options" data-step="1">
+            <div class="form-option" data-val="saas">SaaS Platform</div>
+            <div class="form-option" data-val="app">Mobile App</div>
+            <div class="form-option" data-val="web">Website / Landing Page</div>
+            <div class="form-option" data-val="ai">AI-Powered Tool</div>
+            <div class="form-option" data-val="mvp">MVP / Prototype</div>
+            <div class="form-option" data-val="rescue">Rescue a broken build</div>
+            <div class="form-option" data-val="advise">Strategy / Architecture advice</div>
+            <div class="form-option" data-val="other">Something else</div>
+          </div>
+          <div class="form-ai-note"><span>⚡ AI:</span> Your selection shapes every question that follows. We only ask what's relevant.</div>
+          <div class="form-nav"><div></div><button class="form-next" id="next1" disabled>Continue →</button></div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="form-step" id="step2">
+          <div class="form-step-label">Step 2 — Adapted to your selection</div>
+          <div class="form-question" id="q2">Who are the end users?</div>
+          <div class="form-options" data-step="2">
+            <div class="form-option" data-val="b2b">B2B — Businesses</div>
+            <div class="form-option" data-val="b2c">B2C — Consumers</div>
+            <div class="form-option" data-val="internal">Internal team</div>
+            <div class="form-option" data-val="marketplace">Marketplace (both)</div>
+          </div>
+          <div class="form-ai-note"><span>⚡ AI:</span> Understanding your audience determines the stack, auth model, and pricing architecture we recommend.</div>
+          <div class="form-nav"><button class="form-back" onclick="goStep(1)">← Back</button><button class="form-next" id="next2" disabled>Continue →</button></div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="form-step" id="step3">
+          <div class="form-step-label">Step 3 — Scope</div>
+          <div class="form-question">Describe your idea in a few sentences.</div>
+          <textarea class="form-textarea" id="ideaText" placeholder="What problem does it solve? Who is it for? What does success look like?"></textarea>
+          <div class="form-ai-note"><span>⚡ AI:</span> The more context you give here, the fewer follow-ups we need. Think problem → solution → outcome.</div>
+          <div class="form-nav"><button class="form-back" onclick="goStep(2)">← Back</button><button class="form-next" id="next3">Continue →</button></div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="form-step" id="step4">
+          <div class="form-step-label">Step 4 — Timeline & Budget</div>
+          <div class="form-question">What's your ideal timeline?</div>
+          <div class="form-options" data-step="4">
+            <div class="form-option" data-val="asap">ASAP — days</div>
+            <div class="form-option" data-val="weeks">Weeks</div>
+            <div class="form-option" data-val="month">1–2 months</div>
+            <div class="form-option" data-val="flexible">Flexible</div>
+          </div>
+          <div class="form-ai-note"><span>⚡ AI:</span> We scope to your timeline. Tighter deadlines = tighter MVPs. We'll tell you what's realistic.</div>
+          <div class="form-nav"><button class="form-back" onclick="goStep(3)">← Back</button><button class="form-next" id="next4" disabled>Continue →</button></div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="form-step" id="step5">
+          <div class="form-step-label">Step 5 — Contact</div>
+          <div class="form-question">Where do we send the response?</div>
+          <input class="form-input" type="text" id="nameInput" placeholder="Your name" style="margin-bottom:0.5rem">
+          <input class="form-input" type="email" id="emailInput" placeholder="Your email">
+          <div class="form-ai-note"><span>⚡ AI:</span> If the idea has legs, you'll get a scope, timeline, and fixed price. If it's not a fit, we'll say so. No ghosting.</div>
+          <div class="form-nav"><button class="form-back" onclick="goStep(4)">← Back</button><button class="form-next" id="submitBtn">Submit brief →</button></div>
+        </div>
+
+        <!-- Success -->
+        <div class="form-submit-msg" id="formSuccess">
+          <h3 style="color:var(--neon)">Brief received. We're on it.</h3>
+          <p>You'll hear back with one of two things: a fixed-price scope document with a timeline, or honest feedback on why it's not a fit. No ghosting. No silence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== LIVE BUILDS ==================== -->
+<div class="section" id="builds">
+  <div class="container text-center">
+    <div class="section-tag"><span class="gold">●</span>&ensp;Live builds — Active now</div>
+    <div class="section-title">Currently building 3 products <span class="accent">for clients.</span></div>
+    <div class="section-sub">Real-time visibility into what's on the bench. Project details classified — the work speaks for itself.</div>
+
+    <div class="terminal">
+      <div class="terminal-header">
+        <div class="terminal-dots"><span></span><span></span><span></span></div>
+        <div class="terminal-title">sierra21 — build monitor v2.1</div>
+      </div>
+      <div class="terminal-body">
+        <div class="t-line"><span class="t-prompt">$</span> <span class="t-white">s21 status --all --live</span></div>
+        <div class="t-line"><span class="t-dim">// querying active builds...</span></div>
+        <div class="t-line"><span class="t-prompt">→</span> <span class="t-gold">3 builds active</span> <span class="t-dim">|</span> <span class="t-blue">value: £250,000+</span> <span class="t-dim">|</span> <span class="t-white">all systems green</span></div>
+        <div class="t-line"><span class="t-prompt">→</span> <span class="t-dim">deployments this month:</span> <span class="t-gold">14</span> <span class="t-dim">|</span> uptime: <span class="t-white">99.9%</span></div>
+        <div class="t-line"><span class="t-prompt">→</span> <span class="t-dim">next deployment:</span> <span class="t-gold">&lt; 24hrs</span><span class="typing-cursor"></span></div>
+      </div>
+    </div>
+
+    <div class="builds-grid">
+      <div class="build-card">
+        <div class="build-status s-green"><span class="dot"></span> Deploying</div>
+        <div class="build-code">BUILD — 001</div>
+        <div class="build-desc">AI-powered SaaS command centre for the UK childcare sector. Multi-site ops, compliance, parent communications.</div>
+        <div class="build-bar-track"><div class="build-bar bar-green" style="width:72%"></div></div>
+        <div class="build-meta"><span>SaaS Platform</span><span>72%</span></div>
+        <div class="build-stack">
+          <span class="stack-tag">Next.js</span>
+          <span class="stack-tag">Supabase</span>
+          <span class="stack-tag">Claude AI</span>
+          <span class="stack-tag">Vercel</span>
+          <span class="stack-tag">Tailwind</span>
+        </div>
+      </div>
+      <div class="build-card">
+        <div class="build-status s-blue"><span class="dot"></span> In development</div>
+        <div class="build-code">BUILD — 002</div>
+        <div class="build-desc">Vertical operations platform for trades and construction. Quoting, scheduling, compliance documentation.</div>
+        <div class="build-bar-track"><div class="build-bar bar-blue" style="width:35%"></div></div>
+        <div class="build-meta"><span>SaaS Platform</span><span>35%</span></div>
+        <div class="build-stack">
+          <span class="stack-tag">Next.js</span>
+          <span class="stack-tag">Supabase</span>
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">Vercel</span>
+        </div>
+      </div>
+      <div class="build-card">
+        <div class="build-status s-purple"><span class="dot"></span> Architecture</div>
+        <div class="build-code">BUILD — 003</div>
+        <div class="build-desc">Client build. AI-integrated platform for a niche service sector. Details classified.</div>
+        <div class="build-bar-track"><div class="build-bar bar-purple" style="width:15%"></div></div>
+        <div class="build-meta"><span>Client Build</span><span>15%</span></div>
+        <div class="build-stack">
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">Node.js</span>
+          <span class="stack-tag">AI/ML</span>
+          <span class="stack-tag">Cloud</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="value-bar">
+      <div class="value-label">Combined active build value</div>
+      <div class="value-amount">£250,000+</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CAPABILITY MATRIX ==================== -->
+<div class="section" id="capabilities">
+  <div class="container text-center">
+    <div class="section-tag">Capability matrix</div>
+    <div class="section-title">Full spectrum. <span class="accent">Zero gaps.</span></div>
+    <div class="section-sub">Everything from architecture to deployment, handled by one person. No sub-contractors. No handoffs. No "let me check with the team".</div>
+    <div class="cap-matrix">
+      <div class="cap-item">
+        <h4>Full-Stack Dev</h4>
+        <div class="cap-bar-track"><div class="cap-bar" style="width:97%"></div></div>
+        <div class="cap-label">Expert</div>
+      </div>
+      <div class="cap-item">
+        <h4>AI Integration</h4>
+        <div class="cap-bar-track"><div class="cap-bar" style="width:94%"></div></div>
+        <div class="cap-label">Expert</div>
+      </div>
+      <div class="cap-item">
+        <h4>UI / UX Design</h4>
+        <div class="cap-bar-track"><div class="cap-bar" style="width:90%"></div></div>
+        <div class="cap-label">Advanced</div>
+      </div>
+      <div class="cap-item">
+        <h4>SEO & Analytics</h4>
+        <div class="cap-bar-track"><div class="cap-bar" style="width:92%"></div></div>
+        <div class="cap-label">Advanced</div>
+      </div>
+      <div class="cap-item">
+        <h4>DevOps / Cloud</h4>
+        <div class="cap-bar-track"><div class="cap-bar" style="width:95%"></div></div>
+        <div class="cap-label">Expert</div>
+      </div>
+      <div class="cap-item">
+        <h4>Market Research</h4>
+        <div class="cap-bar-track"><div class="cap-bar" style="width:88%"></div></div>
+        <div class="cap-label">Advanced</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== TRUST SIGNALS ==================== -->
+<div class="divider"></div>
+<div class="trust-bar">
+  <div class="trust-item"><div class="trust-value">Global</div><div class="trust-label">English-speaking world</div></div>
+  <div class="trust-item"><div class="trust-value">8</div><div class="trust-label">Companies built &amp; sold</div></div>
+  <div class="trust-item"><div class="trust-value">100%</div><div class="trust-label">Delivery rate</div></div>
+  <div class="trust-item"><div class="trust-value">&lt; 24h</div><div class="trust-label">Response time</div></div>
+</div>
+
+<!-- ==================== FAQ — OBJECTION HANDLING ==================== -->
+<div class="divider"></div>
+<div class="section">
+  <div class="container text-center">
+    <div class="section-tag">Common questions</div>
+    <div class="section-title">Straight answers. <span class="accent">No fluff.</span></div>
+    <div style="max-width:620px;margin:0 auto;text-align:left;">
+
+      <div style="border-bottom:1px solid var(--border);padding:1.5rem 0;">
+        <div style="font-weight:600;font-size:0.95rem;margin-bottom:0.5rem;color:var(--white);">How much does a build cost?</div>
+        <div style="font-size:0.85rem;color:var(--grey-light);line-height:1.7;font-weight:300;">It depends on scope. Micro builds (single pages, quick tools) from £250. Websites and MVPs from £500. Full SaaS platforms and complex builds from £5,000+. You'll get a fixed price upfront — no hourly billing, no scope creep invoices. Rescue jobs and advisory sessions are scoped on inspection.</div>
+      </div>
+
+      <div style="border-bottom:1px solid var(--border);padding:1.5rem 0;">
+        <div style="font-weight:600;font-size:0.95rem;margin-bottom:0.5rem;color:var(--white);">How fast can you deliver?</div>
+        <div style="font-size:0.85rem;color:var(--grey-light);line-height:1.7;font-weight:300;">Working demos in 5–7 days for most projects. Small builds and prototypes often ship in 48–72 hours. We move at a pace most agencies can't match because there's no committee, no layers, no sign-off chain.</div>
+      </div>
+
+      <div style="border-bottom:1px solid var(--border);padding:1.5rem 0;">
+        <div style="font-weight:600;font-size:0.95rem;margin-bottom:0.5rem;color:var(--white);">What if I just have a rough idea?</div>
+        <div style="font-size:0.85rem;color:var(--grey-light);line-height:1.7;font-weight:300;">That's fine — most clients do. Submit what you have through the smart form. If the idea has potential, we'll come back with a clear scope and architecture. If it needs refining, we'll tell you that too.</div>
+      </div>
+
+      <div style="border-bottom:1px solid var(--border);padding:1.5rem 0;">
+        <div style="font-weight:600;font-size:0.95rem;margin-bottom:0.5rem;color:var(--white);">Do I own the code?</div>
+        <div style="font-size:0.85rem;color:var(--grey-light);line-height:1.7;font-weight:300;">Yes. 100%. Every line of code, every design asset, every deployment config. It's your product. You get full access to the repository on completion.</div>
+      </div>
+
+      <div style="border-bottom:1px solid var(--border);padding:1.5rem 0;">
+        <div style="font-weight:600;font-size:0.95rem;margin-bottom:0.5rem;color:var(--white);">What about support after launch?</div>
+        <div style="font-size:0.85rem;color:var(--grey-light);line-height:1.7;font-weight:300;">You get full ownership of the code and deployment. We hand over with documentation so you or your team can maintain it. If something breaks down the line, that's what our Rescue service is for — we'll take a look, scope the fix, and get it sorted.</div>
+      </div>
+
+      <div style="padding:1.5rem 0;">
+        <div style="font-weight:600;font-size:0.95rem;margin-bottom:0.5rem;color:var(--white);">How do we communicate?</div>
+        <div style="font-size:0.85rem;color:var(--grey-light);line-height:1.7;font-weight:300;">Email and async messaging. No Zoom calls, no weekly standups. You'll get regular progress updates and working previews you can test yourself. If we need something from you, we ask once and clearly.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ==================== THE BUILDER ==================== -->
+<div class="section">
+  <div class="container text-center">
+    <div class="section-tag">The builder</div>
+    <div class="operator-text">
+      <p><strong>James Williams.</strong> Ex-military. Eight companies built. One exit. Still building. I bring military-grade discipline to software — structured execution, zero waste, relentless forward momentum.</p>
+      <p>If you're a founder with conviction but no CTO, I'm your build partner. If your agency is bleeding you dry for basic changes, I'll fix that too. If you've got an idea but no clue where to start — that's exactly what I do, every day.</p>
+      <p>You'll probably never meet me — and that's exactly how it should be. <strong>This is about your software, not my face on a LinkedIn carousel.</strong></p>
+    </div>
+    <div class="operator-meta">
+      <div class="meta-item"><div class="meta-dot"></div>Based in Asia-Pacific</div>
+      <div class="meta-item"><div class="meta-dot"></div>Serves founders & SMBs globally</div>
+      <div class="meta-item"><div class="meta-dot"></div>Async-first — timezone is never a barrier</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== WHY I BUILD ==================== -->
+<div class="section" style="border-top:1px solid var(--border);">
+  <div class="container text-center">
+    <div class="section-tag">Why I build</div>
+    <div style="max-width:620px;margin:0 auto;">
+      <p style="font-size:1.05rem;color:var(--grey-light);line-height:1.9;font-weight:300;margin-bottom:1.2rem;">I've built eight businesses. Sold one. Started from nothing every time.</p>
+      <p style="font-size:1.05rem;color:var(--grey-light);line-height:1.9;font-weight:300;margin-bottom:1.2rem;">I know what it's like to have an idea and no budget. To compete against companies with ten times your headcount. To feel like the system isn't built for you.</p>
+      <p style="font-size:1.05rem;color:var(--white);line-height:1.9;font-weight:500;margin-bottom:1.2rem;">It isn't. So I build tools for people who build anyway.</p>
+      <p style="font-size:1.05rem;color:var(--grey-light);line-height:1.9;font-weight:300;margin-bottom:1.2rem;">Founders. Sole traders. Small teams with big conviction. The ones who'd rather ship than pitch. Who measure success in revenue, not rounds raised.</p>
+      <p style="font-size:1.05rem;color:var(--gold);line-height:1.9;font-weight:400;margin-bottom:1.2rem;">I want your software to make you money — so you can spend your time on the things that actually matter. Family. Freedom. The life you started this for.</p>
+      <p style="font-size:1.05rem;color:var(--grey-light);line-height:1.9;font-weight:300;">That's it. That's why Sierra21 exists.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DEPLOY COUNTER ==================== -->
+<div class="deploy-strip">
+  <span><span class="num">14</span> deployments shipped this month &ensp;·&ensp; <span class="num">99.9%</span> uptime &ensp;·&ensp; all systems <span style="color:var(--neon)">operational</span></span>
+</div>
+
+<!-- ==================== CONTACT ==================== -->
+<div class="section" id="contact">
+  <div class="container text-center">
+    <div class="section-tag">Contact</div>
+    <div class="contact-block">
+      <h3>Got an idea? Let's see if it has legs.</h3>
+      <p>Submit your idea now and you'll get a straight answer — a scope, a price, and a realistic timeline. If it's not a fit, we'll tell you. No ghosting. No invoices for "discovery".</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;align-items:center">
+        <a href="#enquiry" class="btn btn-primary">Submit your idea</a>
+        <a href="mailto:james@sierra21.com" class="contact-email">james@sierra21.com</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="footer-left">© 2026 SIERRA21</div>
+  <div class="footer-center">Stay low. Move fast. Build everything.</div>
+  <div class="footer-right"><div class="neon-dot"></div> OPERATIONAL</div>
+</footer>
+
+</div><!-- /content-wrapper -->
+
+<!-- ==================== EASTER EGG TERMINAL ==================== -->
+<div class="easter-terminal" id="easterTerminal">
+  <div class="terminal-header">
+    <div class="terminal-dots"><span></span><span></span><span></span></div>
+    <div class="terminal-title">sierra21 — build console</div>
+  </div>
+  <div class="easter-body" id="easterBody"></div>
+</div>
+
+<script>
+// ===== SMART FORM =====
+let selections = {};
+
+document.querySelectorAll('.form-options').forEach(group => {
+  group.querySelectorAll('.form-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      group.querySelectorAll('.form-option').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      const step = group.dataset.step;
+      selections[step] = opt.dataset.val;
+      const nextBtn = document.getElementById('next' + step);
+      if (nextBtn) nextBtn.disabled = false;
+
+      // Adaptive question for step 2
+      if (step === '1') {
+        const q2 = document.getElementById('q2');
+        const map = {
+          'saas': 'Who are the end users of this platform?',
+          'app': 'What platforms do you need? (iOS, Android, both)',
+          'web': 'Is this a marketing site, a web app, or an e-commerce store?',
+          'ai': 'What task should the AI handle?',
+          'mvp': 'What\'s the one thing this MVP must prove?',
+          'rescue': 'What\'s the URL or repo of the broken project?',
+          'advise': 'What stage is your idea at right now?',
+          'other': 'Tell us more — what do you have in mind?'
+        };
+        if (q2 && map[opt.dataset.val]) q2.textContent = map[opt.dataset.val];
+      }
+    });
+  });
+});
+
+function goStep(n) {
+  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step' + n).classList.add('active');
+  for (let i = 1; i <= 5; i++) {
+    document.getElementById('prog' + i).classList.toggle('active', i <= n);
+  }
+}
+
+document.getElementById('next1').addEventListener('click', () => goStep(2));
+document.getElementById('next2').addEventListener('click', () => goStep(3));
+document.getElementById('next3').addEventListener('click', () => goStep(4));
+document.getElementById('next4').addEventListener('click', () => goStep(5));
+document.getElementById('submitBtn').addEventListener('click', () => {
+  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.form-progress-bar').forEach(b => b.classList.add('active'));
+  document.getElementById('formSuccess').style.display = 'block';
+});
+
+// ===== EASTER EGG TERMINAL =====
+const logo = document.getElementById('logoTrigger');
+const easter = document.getElementById('easterTerminal');
+const easterBody = document.getElementById('easterBody');
+let easterOpen = false;
+
+const easterLines = [
+  { text: '$ s21 --build-mode', cls: 't-white' },
+  { text: '// authenticating...', cls: 't-dim', delay: 400 },
+  { text: '→ builder: james_williams', cls: 't-gold', delay: 800 },
+  { text: '→ location: asia-pacific', cls: 't-dim', delay: 1000 },
+  { text: '→ status: building', cls: 't-prompt', delay: 1200 },
+  { text: '→ active_builds: 3', cls: 't-gold', delay: 1400 },
+  { text: '→ total_value: £250,000+', cls: 't-blue', delay: 1600 },
+  { text: '→ deployments_30d: 14', cls: 't-white', delay: 1800 },
+  { text: '→ meetings_attended: 0', cls: 't-prompt', delay: 2000 },
+  { text: '→ stack: next.js + supabase + vercel + claude_ai', cls: 't-dim', delay: 2200 },
+  { text: '→ philosophy: proof_of_work', cls: 't-gold', delay: 2400 },
+  { text: '→ motto: "stay low. move fast. build everything."', cls: 't-white', delay: 2600 },
+  { text: '// sierra21 operational ■', cls: 't-prompt', delay: 3000 },
+];
+
+logo.addEventListener('click', () => {
+  if (easterOpen) {
+    easter.classList.remove('visible');
+    easterOpen = false;
+    setTimeout(() => { easterBody.innerHTML = ''; }, 500);
+    return;
+  }
+  easterOpen = true;
+  easterBody.innerHTML = '';
+  easter.classList.add('visible');
+
+  easterLines.forEach((line, i) => {
+    setTimeout(() => {
+      const div = document.createElement('div');
+      div.className = 't-line ' + line.cls;
+      div.style.animationDelay = '0s';
+      div.innerHTML = line.text;
+      easterBody.appendChild(div);
+      easterBody.scrollTop = easterBody.scrollHeight;
+    }, line.delay || i * 200);
+  });
+});
+
+// Close easter egg on outside click
+document.addEventListener('click', (e) => {
+  if (easterOpen && !easter.contains(e.target) && e.target !== logo && !logo.contains(e.target)) {
+    easter.classList.remove('visible');
+    easterOpen = false;
+    setTimeout(() => { easterBody.innerHTML = ''; }, 500);
+  }
+});
+</script>
+
+</body>
+</html>
